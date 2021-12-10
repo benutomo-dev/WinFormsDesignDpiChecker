@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <WindowsFormsAutoScaleMode>Dpi</WindowsFormsAutoScaleMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Benutomo.WinFormsDesignDpiChecker" Version="0.0.0.1" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <CompilerVisibleProperty Include="WindowsFormsAutoScaleMode" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WinFormsDesignDpiChecker\WinFormsDesignDpiChecker.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>-->
+
+</Project>

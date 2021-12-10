@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WinFormsDesignDpiChecker": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\WinFormsApp\\WinFormsApp.csproj"
+    }
+  }
+}
