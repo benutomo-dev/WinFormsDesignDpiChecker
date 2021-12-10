@@ -54,13 +54,13 @@ namespace WinFormsDesignDpiChecker
             }
 
 
+            var baseType = namedTypeSymbol.BaseType;
+
             while (true)
             {
-                var baseType = namedTypeSymbol.BaseType;
-
                 if (baseType is null) return;
 
-                if (baseType.SpecialType == SpecialType.System_Object) return;
+                if (baseType.SpecialType != SpecialType.None) return;
 
                 if (baseType.ContainingNamespace.Name == "Forms"
                     && baseType.ContainingNamespace.ContainingNamespace.Name == "Windows"
@@ -68,17 +68,21 @@ namespace WinFormsDesignDpiChecker
                     && baseType.ContainingNamespace.ContainingNamespace.ContainingNamespace.ContainingNamespace.IsGlobalNamespace
                     )
                 {
-                    if (baseType.Name == "Form" || baseType.Name == "UserControl")
+                    if (baseType.Name == "Form" || baseType.Name == "UserControl" || baseType.Name == "ContainerControl")
                     {
                         break;
                     }
                 }
+
+                baseType = baseType.BaseType;
             }
 
             var locations = namedTypeSymbol.GetMembers("InitializeComponent").SelectMany(v => v.Locations);
 
             foreach (var location in locations)
             {
+                context.CancellationToken.ThrowIfCancellationRequested();
+
                 if (location.SourceTree is null)
                 {
                     continue;
@@ -103,6 +107,8 @@ namespace WinFormsDesignDpiChecker
 
                 foreach (var assignmentExpression in assignmentExpressions)
                 {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+
                     if (assignmentExpression.Left is MemberAccessExpressionSyntax leftExpression)
                     {
                         if (leftExpression.Name.Identifier.ValueText == "AutoScaleMode")

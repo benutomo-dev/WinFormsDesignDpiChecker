@@ -6,14 +6,14 @@
     <RootNamespace>Benutomo.WinFormsDesignDpiChecker</RootNamespace>
     <LangVersion>10</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>1.1.0.1</Version>
+    <Version>1.0.0.5</Version>
 
     <!-- NuGet -->
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
     <PackageId>Benutomo.WinFormsDesignDpiChecker</PackageId>
     <Description>Checks the scale mode of the file saved by the winforms designer.</Description>
-    <PackageVersion>0.0.0.1</PackageVersion>
+    <PackageVersion>$(Version)</PackageVersion>
     <Authors>benutomo</Authors>
     <Copyright>© benutomo.</Copyright>
     <PackageTags>analyzer;winforms;designer</PackageTags>
